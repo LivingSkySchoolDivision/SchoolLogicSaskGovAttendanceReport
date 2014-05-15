@@ -53,6 +53,8 @@ namespace SKGovAtt
                 // Load info from the config file
                 txtDistrictPrefix.Text = AppConfiguration.GetDivisionPrefix();
                 txtDistrictDAN.Text = AppConfiguration.GetDivisionDAN();
+                txtDistrictDAN.Enabled = true;
+                txtDistrictPrefix.Enabled = true;
 
                 // Load the list of school districts
                 drpDistricts.Items.Clear();
@@ -212,10 +214,6 @@ namespace SKGovAtt
                 {
                     if (!string.IsNullOrEmpty(saveFileDialog1.FileName))
                     {
-                        // Does the file exist already? If it does, delete it
-
-                        // Can we even write to this file?
-
                         prgProgressBar.Style = ProgressBarStyle.Blocks;
                         prgProgressBar.Visible = true;
 
@@ -337,19 +335,27 @@ namespace SKGovAtt
                             {
                                 UpdateStatusBar("Writing file to disk...");
 
-                                using (
-                                    FileStream outputFile = new FileStream(saveFileDialog1.FileName, FileMode.Create,
-                                        FileAccess.Write))
+                                try
                                 {
-                                    outputFile.Write(outputFileContents.GetBuffer(), 0, (int)outputFileContents.Length);
-                                }
+                                    using (
+                                        FileStream outputFile = new FileStream(saveFileDialog1.FileName, FileMode.Create,
+                                            FileAccess.Write))
+                                    {
+                                        outputFile.Write(outputFileContents.GetBuffer(), 0, (int)outputFileContents.Length);
+                                    }
 
-                                MessageBox.Show("File saved!", "File Saved", MessageBoxButtons.OK,
+                                    MessageBox.Show("File saved!", "File Saved", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
-                                prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                                    prgProgressBar.BeginInvoke((MethodInvoker)delegate
+                                    {
+                                        prgProgressBar.Visible = false;
+                                    });
+                                }
+                                catch (Exception ex)
                                 {
-                                    prgProgressBar.Visible = false;
-                                });
+                                    MessageBox.Show("Failed to save file: " + ex.Message, "File save error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                
                                 UpdateStatusBar("");
                                 btnGenerateDaily.BeginInvoke((MethodInvoker)delegate
                                 {
@@ -420,12 +426,26 @@ namespace SKGovAtt
 
         private void btnGenerateDaily_Click(object sender, EventArgs e)
         {
-            GenerateAndSaveReport(true);
+            try
+            {
+                GenerateAndSaveReport(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGeneratePeriod_Click(object sender, EventArgs e)
         {
-            GenerateAndSaveReport(false);
+            try
+            {
+                GenerateAndSaveReport(false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnConfigDatabase_Click(object sender, EventArgs e)

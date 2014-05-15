@@ -31,9 +31,22 @@ namespace SKGovAtt
             return input.Replace("\n", "");
         }
 
-        private string BuildConnectionString(string serverName, string username, string password, string dbName)
+        /// <summary>
+        /// Builds a basic connection string using data from the fields provided
+        /// </summary>
+        /// <param name="serverName"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="dbName"></param>
+        /// <returns></returns>
+        private string BuildConnectionString_Standard(string serverName, string username, string password, string dbName)
         {
-            return "data source=" + serverName + ";initial catalog=" + dbName + ";user id=" + username + ";password=" + password + ";Trusted_Connection=false";
+            return "Server=" + serverName + ";Database=" + dbName + ";user id=" + username + ";password=" + password + ";";            
+        }
+
+        private string BuildConnectionString_Trusted(string serverName, string dbName)
+        {
+            return "Server=" + serverName + ";Database=" + dbName + ";Trusted_Connection=True;";
         }
 
         private void DatabaseConnectionConfig_Shown(object sender, EventArgs e)
@@ -44,12 +57,14 @@ namespace SKGovAtt
             txtPassword.Text = "password";
             txtUsername.Text = "readonly_username";
             txtServerName.Text = "sql.yourdomain";
+            txtTrustedDatabaseName.Text = "SchoolLogicDB";
+            txtTrustedServerName.Text = "sql.yourdomain";
             UpdateStatusbar("");
         }
 
         private void btnCreateConnectionString_Click(object sender, EventArgs e)
         {
-            txtConnectionString.Text = BuildConnectionString(txtServerName.Text, txtUsername.Text, txtPassword.Text, txtDatabaseName.Text);
+            txtConnectionString.Text = BuildConnectionString_Standard(txtServerName.Text, txtUsername.Text, txtPassword.Text, txtDatabaseName.Text);
         }
 
         private void UpdateStatusbar(string message, Color color)
@@ -92,8 +107,18 @@ namespace SKGovAtt
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AppConfiguration.SetConnectionString(txtConnectionString.Text);
+            if (string.IsNullOrEmpty(txtConnectionString.Text) || txtConnectionString.Text.Length < 5)
+            {
+                MessageBox.Show("The connection string does not appear to be valid. This will prevent this utility from working.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            AppConfiguration.SetConnectionString(txtConnectionString.Text);            
             this.Close();
+        }
+
+        private void btnBuildConnStringTrusted_Click(object sender, EventArgs e)
+        {
+            txtConnectionString.Text = BuildConnectionString_Trusted(txtTrustedServerName.Text, txtTrustedDatabaseName.Text);
         }
 
 

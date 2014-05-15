@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label5.Text" xml:space="preserve">
-    <value>* The user that you use here should have READ ONLY access to the SchoolLogic database. You may have better luck if this user is created directly in SQL Management studio, rather than in Windows/Active Directly.</value>
+  <data name="label7.Text" xml:space="preserve">
+    <value>A connection string tells this utility how to access the SchoolLogic database. The fields to the right should assist you in creating one. Alternatively, you can manually edit or copy/paste one directly into the box at the bottom of this window.</value>
   </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>If the connection string that this program creates does not work, or if it does not meet your organizations security requirements, you can try creating one yourself using the box at the bottom of this window. </value>
+  <data name="label10.Text" xml:space="preserve">
+    <value>The connection string is stored UNENCRYPTED in a configuration file with the EXE of this program (with the file extension .config).  If you are storing this utility on a file share, ensure that only authorized users have access to the share.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

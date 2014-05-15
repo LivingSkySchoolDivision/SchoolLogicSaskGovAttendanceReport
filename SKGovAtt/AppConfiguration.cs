@@ -23,6 +23,10 @@ namespace SKGovAtt
         private const string ConfigPrefixStringKeyName = "DistrictPrefix";
         private const string ConfigFirstRunKeyName = "FirstRun";
 
+        /// <summary>
+        /// Is this the first time this program has been run?
+        /// </summary>
+        /// <returns></returns>
         public static bool IsFirstRun()
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -39,6 +43,7 @@ namespace SKGovAtt
             }
         }
         
+
         public static string GetConnectionString()
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -89,47 +94,62 @@ namespace SKGovAtt
         
         public static void SetDivisionDAN(string newValue)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (!config.AppSettings.Settings.AllKeys.Contains(ConfigDANStringKeyName))
+            try
             {
-                config.AppSettings.Settings.Add(ConfigDANStringKeyName, newValue);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (!config.AppSettings.Settings.AllKeys.Contains(ConfigDANStringKeyName))
+                {
+                    config.AppSettings.Settings.Add(ConfigDANStringKeyName, newValue);
+                }
+                else
+                {
+                    config.AppSettings.Settings[ConfigDANStringKeyName].Value = newValue;
+                }
+                config.Save();
+                ConfigurationManager.RefreshSection("appSettings");
             }
-            else
-            {
-                config.AppSettings.Settings[ConfigDANStringKeyName].Value = newValue;
-            }
-            config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            catch { }
         }
 
         public static void SetDivisionPrefix(string newValue)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (!config.AppSettings.Settings.AllKeys.Contains(ConfigPrefixStringKeyName))
+            try
             {
-                config.AppSettings.Settings.Add(ConfigPrefixStringKeyName, newValue);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (!config.AppSettings.Settings.AllKeys.Contains(ConfigPrefixStringKeyName))
+                {
+                    config.AppSettings.Settings.Add(ConfigPrefixStringKeyName, newValue);
+                }
+                else
+                {
+                    config.AppSettings.Settings[ConfigPrefixStringKeyName].Value = newValue;
+                }
+                config.Save();
+                ConfigurationManager.RefreshSection("appSettings");
             }
-            else
-            {
-                config.AppSettings.Settings[ConfigPrefixStringKeyName].Value = newValue;
-            }
-            config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
+            catch { }
         }
 
         public static void SetConnectionString(string newValue)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (!config.AppSettings.Settings.AllKeys.Contains(ConfigConnectionStringKeyName))
+            try
             {
-                config.AppSettings.Settings.Add(ConfigConnectionStringKeyName, newValue);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                if (!config.AppSettings.Settings.AllKeys.Contains(ConfigConnectionStringKeyName))
+                {
+                    config.AppSettings.Settings.Add(ConfigConnectionStringKeyName, newValue);
+                }
+                else
+                {
+                    config.AppSettings.Settings[ConfigConnectionStringKeyName].Value = newValue;
+                }
+                config.Save();
+                ConfigurationManager.RefreshSection("appSettings");
             }
-            else
+            catch (Exception ex) 
             {
-                config.AppSettings.Settings[ConfigConnectionStringKeyName].Value = newValue;
+                MessageBox.Show("Error saving: " + ex.Message, "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            config.Save();
-            ConfigurationManager.RefreshSection("appSettings");
         }
 
 

@@ -48,6 +48,9 @@
             this.btnConfigDatabase = new System.Windows.Forms.Button();
             this.btnRetryLoadDistricts = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // drpDistricts
@@ -87,7 +90,7 @@
             // btnGeneratePeriod
             // 
             this.btnGeneratePeriod.Enabled = false;
-            this.btnGeneratePeriod.Location = new System.Drawing.Point(245, 298);
+            this.btnGeneratePeriod.Location = new System.Drawing.Point(256, 362);
             this.btnGeneratePeriod.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneratePeriod.Name = "btnGeneratePeriod";
             this.btnGeneratePeriod.Size = new System.Drawing.Size(209, 31);
@@ -99,7 +102,7 @@
             // btnGenerateDaily
             // 
             this.btnGenerateDaily.Enabled = false;
-            this.btnGenerateDaily.Location = new System.Drawing.Point(245, 263);
+            this.btnGenerateDaily.Location = new System.Drawing.Point(256, 327);
             this.btnGenerateDaily.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerateDaily.Name = "btnGenerateDaily";
             this.btnGenerateDaily.Size = new System.Drawing.Size(209, 31);
@@ -123,9 +126,9 @@
             this.drpMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpMonth.Enabled = false;
             this.drpMonth.FormattingEnabled = true;
-            this.drpMonth.Location = new System.Drawing.Point(331, 155);
+            this.drpMonth.Location = new System.Drawing.Point(71, 19);
             this.drpMonth.Name = "drpMonth";
-            this.drpMonth.Size = new System.Drawing.Size(123, 21);
+            this.drpMonth.Size = new System.Drawing.Size(132, 21);
             this.drpMonth.TabIndex = 6;
             // 
             // drpYear
@@ -133,15 +136,15 @@
             this.drpYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpYear.Enabled = false;
             this.drpYear.FormattingEnabled = true;
-            this.drpYear.Location = new System.Drawing.Point(331, 190);
+            this.drpYear.Location = new System.Drawing.Point(71, 46);
             this.drpYear.Name = "drpYear";
-            this.drpYear.Size = new System.Drawing.Size(123, 21);
+            this.drpYear.Size = new System.Drawing.Size(132, 21);
             this.drpYear.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(242, 193);
+            this.label1.Location = new System.Drawing.Point(6, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 8;
@@ -150,7 +153,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 158);
+            this.label2.Location = new System.Drawing.Point(6, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 9;
@@ -177,7 +180,7 @@
             // txtDistrictDAN
             // 
             this.txtDistrictDAN.Enabled = false;
-            this.txtDistrictDAN.Location = new System.Drawing.Point(331, 74);
+            this.txtDistrictDAN.Location = new System.Drawing.Point(342, 74);
             this.txtDistrictDAN.Name = "txtDistrictDAN";
             this.txtDistrictDAN.Size = new System.Drawing.Size(123, 20);
             this.txtDistrictDAN.TabIndex = 12;
@@ -195,7 +198,7 @@
             // txtDistrictPrefix
             // 
             this.txtDistrictPrefix.Enabled = false;
-            this.txtDistrictPrefix.Location = new System.Drawing.Point(331, 113);
+            this.txtDistrictPrefix.Location = new System.Drawing.Point(342, 115);
             this.txtDistrictPrefix.Name = "txtDistrictPrefix";
             this.txtDistrictPrefix.Size = new System.Drawing.Size(123, 20);
             this.txtDistrictPrefix.TabIndex = 14;
@@ -204,11 +207,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(242, 116);
+            this.label6.Location = new System.Drawing.Point(242, 118);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.Size = new System.Drawing.Size(87, 13);
             this.label6.TabIndex = 15;
-            this.label6.Text = "District file prefix";
+            this.label6.Text = "District file prefix*";
             // 
             // btnConfigDatabase
             // 
@@ -239,11 +242,37 @@
             this.lblStatus.TabIndex = 18;
             this.lblStatus.Text = "     ";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(242, 138);
+            this.label7.MaximumSize = new System.Drawing.Size(240, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(223, 26);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "*The correct file prefix for your school division was sent to your division by Sa" +
+    "skLearning";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.drpMonth);
+            this.groupBox1.Controls.Add(this.drpYear);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(256, 241);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(209, 81);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Report date";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 480);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnRetryLoadDistricts);
             this.Controls.Add(this.btnConfigDatabase);
@@ -253,10 +282,6 @@
             this.Controls.Add(this.txtDistrictDAN);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.drpYear);
-            this.Controls.Add(this.drpMonth);
             this.Controls.Add(this.prgProgressBar);
             this.Controls.Add(this.btnGenerateDaily);
             this.Controls.Add(this.btnGeneratePeriod);
@@ -272,6 +297,8 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "SaskLearning Attendance Report Generator for SchoolLogic";
             this.Shown += new System.EventHandler(this.MainWindow_Shown);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +325,7 @@
         private System.Windows.Forms.Button btnConfigDatabase;
         private System.Windows.Forms.Button btnRetryLoadDistricts;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
