@@ -179,58 +179,65 @@ namespace LSKYSLData
                         // Foreach class that this student is enrolled in at this time
                         foreach (StudentEnrolledClass sec in student.Schedule.EnrolledClassesOn(startTime))
                         {
-                            // For period attendance, display the individual class in/out dates instead of the student's
-                            string inDateText = string.Empty;
-                            string outDateText = string.Empty;
-
-                            inDateText = sec.InDate.ToShortDateString();
-                            if (sec.OutDate != DateTime.MinValue)
+                            // Don't display courses without government IDs, or classes which failed to load courses
+                            if (sec.CourseInfo != null)
                             {
-                                if (sec.OutDate < endTime)
+                                if (!string.IsNullOrEmpty(sec.CourseInfo.GovernmentCourseCode))
                                 {
-                                    outDateText = sec.OutDate.ToShortDateString();
-                                }
-                            }
+                                    // For period attendance, display the individual class in/out dates instead of the student's
+                                    string inDateText = string.Empty;
+                                    string outDateText = string.Empty;
 
-                            int possiblePeriods = student.Schedule.GetExpectedAttendanceBlocksFor(startTime, endTime, sec.ClassInfo);
+                                    inDateText = sec.InDate.ToShortDateString();
+                                    if (sec.OutDate != DateTime.MinValue)
+                                    {
+                                        if (sec.OutDate < endTime)
+                                        {
+                                            outDateText = sec.OutDate.ToShortDateString();
+                                        }
+                                    }
 
-                            // Don't display students who would have zero possible periods
-                            if (
-                                (possiblePeriods > 0) &&
-                                (!string.IsNullOrEmpty(student.SaskLearningID))
-                                )
-                            {
-                                // Get absences for just this class
-                                int absentPeriods = student.Attendance.Between(startTime, endTime).Absences.Where(c => c.ClassID == sec.ClassInfo.ID).ToList().Count;
+                                    int possiblePeriods = student.Schedule.GetExpectedAttendanceBlocksFor(startTime, endTime, sec.ClassInfo);
 
-                                // Deal with more secretary stupidity
-                                if (absentPeriods > possiblePeriods)
-                                {
-                                    absentPeriods = possiblePeriods;
-                                }
+                                    // Don't display students who would have zero possible periods
+                                    if (
+                                        (possiblePeriods > 0) &&
+                                        (!string.IsNullOrEmpty(student.SaskLearningID))
+                                        )
+                                    {
+                                        // Get absences for just this class
+                                        int absentPeriods = student.Attendance.Between(startTime, endTime).Absences.Where(c => c.ClassID == sec.ClassInfo.ID).ToList().Count;
 
-                                string courseString = string.Empty;
-                                if (sec.ClassInfo.CourseInfo != null)
-                                {
-                                    courseString = sec.ClassInfo.CourseInfo.GovernmentCourseCode;
-                                }
+                                        // Deal with more secretary stupidity
+                                        if (absentPeriods > possiblePeriods)
+                                        {
+                                            absentPeriods = possiblePeriods;
+                                        }
 
-                                worksheet.Cells[dataRowNumber, 1].Value = divisionDAN;
-                                worksheet.Cells[dataRowNumber, 2].Value = school.GovernmentID;
-                                worksheet.Cells[dataRowNumber, 3].Value = student.SaskLearningID;
-                                worksheet.Cells[dataRowNumber, 4].Value = student.DateOfBirth.ToShortDateString();
-                                worksheet.Cells[dataRowNumber, 5].Value = inDateText;
-                                worksheet.Cells[dataRowNumber, 6].Value = outDateText;
-                                worksheet.Cells[dataRowNumber, 7].Value = student.GradeFormatted;
-                                worksheet.Cells[dataRowNumber, 8].Value = courseString;
-                                worksheet.Cells[dataRowNumber, 9].Value = possiblePeriods;
-                                worksheet.Cells[dataRowNumber, 10].Value = absentPeriods;
+                                        string courseString = string.Empty;
+                                        if (sec.ClassInfo.CourseInfo != null)
+                                        {
+                                            courseString = sec.ClassInfo.CourseInfo.GovernmentCourseCode;
+                                        }
 
-                                dataRowNumber++;
-                            }
-                        }
-                    }
-                }
+                                        worksheet.Cells[dataRowNumber, 1].Value = divisionDAN;
+                                        worksheet.Cells[dataRowNumber, 2].Value = school.GovernmentID;
+                                        worksheet.Cells[dataRowNumber, 3].Value = student.SaskLearningID;
+                                        worksheet.Cells[dataRowNumber, 4].Value = student.DateOfBirth.ToShortDateString();
+                                        worksheet.Cells[dataRowNumber, 5].Value = inDateText;
+                                        worksheet.Cells[dataRowNumber, 6].Value = outDateText;
+                                        worksheet.Cells[dataRowNumber, 7].Value = student.GradeFormatted;
+                                        worksheet.Cells[dataRowNumber, 8].Value = courseString;
+                                        worksheet.Cells[dataRowNumber, 9].Value = possiblePeriods;
+                                        worksheet.Cells[dataRowNumber, 10].Value = absentPeriods;
+
+                                        dataRowNumber++;
+                                    }
+                                }//if course has a gov ID
+                            } // if course is not null
+                        }// foreach studentenrolledclass
+                    }// foreach student
+                } // foreach school
 
                 // Set columns to autofit
                 for (int col = 1; col <= 10; col++)

@@ -65,7 +65,6 @@ namespace SKGovAtt
                 // Do this in a background thread so we don't hang the UI
                 BackgroundWorker backgroundThread = new BackgroundWorker();
                 backgroundThread.DoWork += new DoWorkEventHandler(LoadSchoolDistricts);
-                backgroundThread.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DisplaySchoolDistricts);
                 backgroundThread.RunWorkerAsync();
             }
         }
@@ -140,34 +139,37 @@ namespace SKGovAtt
 
         #endregion
 
-
-        private static List<SchoolDistrict> AllDistricts = new List<SchoolDistrict>();
-
-        private void DisplaySchoolDistricts(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (AllDistricts.Count > 0)
-            {
-                drpDistricts.Items.Clear();
-                drpDistricts.Enabled = true;
-                foreach (SchoolDistrict sd in AllDistricts)
-                {
-                    drpDistricts.Items.Add(sd);
-                }
-                drpDistricts.SelectedIndex = 0;
-                EnableControls();
-            }
-        }
+        // This is static so that methods can check if data has been successfully loaded from the database,
+        // specifically the dropdown list on-selected-change (so that it doesn't crash when I add an invalid item 
+        // to the list to indicate that it's loading)        
+        List<SchoolDistrict> AllDistricts = new List<SchoolDistrict>();
 
         private void LoadSchoolDistricts(object sender, DoWorkEventArgs e)
         {
             // Load the list of districts
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(AppConfiguration.GetConnectionString()))
                 {
                     AllDistricts = SchoolDistrict.LoadAll(connection);
                 }
+
+                if (AllDistricts.Count > 0)
+                {
+                    drpDistricts.BeginInvoke((MethodInvoker)delegate
+                    {
+                        drpDistricts.Items.Clear();
+                        drpDistricts.Enabled = true;
+                        foreach (SchoolDistrict sd in AllDistricts)
+                        {
+                            drpDistricts.Items.Add(sd);
+                        }
+                        drpDistricts.SelectedIndex = 0;
+                        EnableControls();
+                    });
+                }
+
+
             }
             catch (Exception ex)
             {

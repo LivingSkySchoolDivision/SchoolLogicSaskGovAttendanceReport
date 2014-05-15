@@ -32,6 +32,27 @@ namespace SKGovAtt
         }
 
         /// <summary>
+        /// Update the status bar label with the specified text and using the specified color
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="color"></param>
+        private void UpdateStatusbar(string message, Color color)
+        {
+            lblTestStatus.Text = message;
+            lblTestStatus.ForeColor = color;
+            lblTestStatus.Refresh();
+        }
+
+        /// <summary>
+        /// Update the status bar label with the specified text, but use the default color
+        /// </summary>
+        /// <param name="message"></param>
+        private void UpdateStatusbar(string message)
+        {
+            UpdateStatusbar(message, Color.Black);
+        }
+
+        /// <summary>
         /// Builds a basic connection string using data from the fields provided
         /// </summary>
         /// <param name="serverName"></param>
@@ -44,11 +65,22 @@ namespace SKGovAtt
             return "Server=" + serverName + ";Database=" + dbName + ";user id=" + username + ";password=" + password + ";";            
         }
 
+        /// <summary>
+        /// Builds a "trusted" connection string using data from the fields provided
+        /// </summary>
+        /// <param name="serverName"></param>
+        /// <param name="dbName"></param>
+        /// <returns></returns>
         private string BuildConnectionString_Trusted(string serverName, string dbName)
         {
             return "Server=" + serverName + ";Database=" + dbName + ";Trusted_Connection=True;";
         }
 
+        /// <summary>
+        /// Runs when the window is rendered
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DatabaseConnectionConfig_Shown(object sender, EventArgs e)
         {
             txtConnectionString.Text = AppConfiguration.GetConnectionString();
@@ -65,18 +97,6 @@ namespace SKGovAtt
         private void btnCreateConnectionString_Click(object sender, EventArgs e)
         {
             txtConnectionString.Text = BuildConnectionString_Standard(txtServerName.Text, txtUsername.Text, txtPassword.Text, txtDatabaseName.Text);
-        }
-
-        private void UpdateStatusbar(string message, Color color)
-        {
-            lblTestStatus.Text = message;
-            lblTestStatus.ForeColor = color;
-            lblTestStatus.Refresh();
-        }
-
-        private void UpdateStatusbar(string message)
-        {
-            UpdateStatusbar(message, Color.Black);
         }
 
         private void btnTest_Click(object sender, EventArgs e)

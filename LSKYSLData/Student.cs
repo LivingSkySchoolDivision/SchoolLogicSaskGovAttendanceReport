@@ -71,13 +71,13 @@ namespace LSKYSLData
         private static Student DataReaderToStudent(SqlDataReader dataReader)
         {
             return new Student(
-                Helpers.ParseInt(dataReader["iStudentID"].ToString()),
-                dataReader["cStudentNumber"].ToString(),
-                Helpers.ParseInt(dataReader["iSchoolID"].ToString()),
-                Helpers.ParseInt(dataReader["iTrackID"].ToString()),
-                dataReader["cGovernmentNumber"].ToString(),
-                Helpers.ParseDate(dataReader["dbirthDate"].ToString()),
-                dataReader["cGrade"].ToString()
+                Helpers.ParseInt(dataReader["iStudentID"].ToString().Trim()),
+                dataReader["cStudentNumber"].ToString().Trim(),
+                Helpers.ParseInt(dataReader["iSchoolID"].ToString().Trim()),
+                Helpers.ParseInt(dataReader["iTrackID"].ToString().Trim()),
+                dataReader["cGovernmentNumber"].ToString().Trim(),
+                Helpers.ParseDate(dataReader["dbirthDate"].ToString().Trim()),
+                dataReader["cGrade"].ToString().Trim()
                 );
         }
 
