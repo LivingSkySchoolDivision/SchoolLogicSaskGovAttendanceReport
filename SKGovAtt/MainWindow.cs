@@ -23,6 +23,8 @@ namespace SKGovAtt
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
+            MessageBox.Show(Environment.Version.Major + "." + Environment.Version.Minor + "", "");
+
             btnRetryLoadDistricts.Enabled = false;
             btnRetryLoadDistricts.Visible = false;
 
@@ -322,17 +324,40 @@ namespace SKGovAtt
                             });
 
                             MemoryStream outputFileContents = new MemoryStream();
-                            if (IsDaily)
+                            try
                             {
-                                outputFileContents = XLSXGenerator.GenerateXLSX_Daily(studentsBySchool, dateFrom, dateTo,
-                                    AppConfiguration.GetDivisionDAN());
+                                if (IsDaily)
+                                {
+                                    outputFileContents =
+                                        XLSXGenerator
+                                            .GenerateXLSX_Daily(
+                                                studentsBySchool,
+                                                dateFrom, dateTo,
+                                                AppConfiguration
+                                                    .GetDivisionDAN());
+                                }
+                                else
+                                {
+                                    outputFileContents =
+                                        XLSXGenerator
+                                            .GenerateXLSX_Period(
+                                                studentsBySchool,
+                                                dateFrom, dateTo,
+                                                AppConfiguration
+                                                    .GetDivisionDAN());
+                                }
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                outputFileContents = XLSXGenerator.GenerateXLSX_Period(studentsBySchool, dateFrom, dateTo,
-                                    AppConfiguration.GetDivisionDAN());
+                                if (ex.Message.ToLower().Contains("system.web"))
+                                {
+                                    MessageBox.Show(".Net dependancy error. Please make sure that this computer has .Net 4.5 installed, and NOT a \"client profile\" version of the .Net Framework.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error generating file: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-
                             // Save the report
                             if (outputFileContents.Length > 0)
                             {
@@ -469,8 +494,8 @@ namespace SKGovAtt
         private void mnuConfigureDatabase_Click(object sender, EventArgs e)
         {
             DisableControls();
+            DisplayRetryButton();
             ShowDatabaseConfigWindow();
-
         }
 
         private void mnuAbout_Click(object sender, EventArgs e)
