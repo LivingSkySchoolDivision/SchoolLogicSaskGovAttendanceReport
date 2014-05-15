@@ -106,9 +106,10 @@ namespace SKGovAtt
 
         private void UpdateProgressBar(int value, int max)
         {
-            if (prgProgressBar.InvokeRequired)
+            if (stsStatusBar.InvokeRequired)
             {
-                prgProgressBar.BeginInvoke((MethodInvoker) delegate {
+                stsStatusBar.BeginInvoke((MethodInvoker)delegate
+                {
                     prgProgressBar.Maximum = max;
                     prgProgressBar.Value = value;
                 });
@@ -122,18 +123,17 @@ namespace SKGovAtt
 
         private void UpdateStatusBar(string message)
         {
-            if (lblStatus.InvokeRequired)
+            if (stsStatusBar.InvokeRequired)
             {
-                lblStatus.BeginInvoke((MethodInvoker) delegate {
+                stsStatusBar.BeginInvoke((MethodInvoker)delegate
+                {
                     lblStatus.Text = message;
-                    lblStatus.Refresh();
                 });
                 
             }
             else
             {
                 lblStatus.Text = message;
-                lblStatus.Refresh();
             }
         }
 
@@ -234,8 +234,8 @@ namespace SKGovAtt
                             // Progress bar:
                             //  Get a count of students before loading any actual data
                             //  Load students data, and after each, progress the progress bar a little more
-
-                            prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                            
+                            stsStatusBar.BeginInvoke((MethodInvoker) delegate
                             {
                                 prgProgressBar.Maximum = selectedSchools.Count;
                                 prgProgressBar.Value = 0;
@@ -278,14 +278,14 @@ namespace SKGovAtt
                                                 .ToList());
                                     }
                                     schoolCounter++;
-                                    prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                                    stsStatusBar.BeginInvoke((MethodInvoker)delegate
                                     {
                                         prgProgressBar.Value = schoolCounter;
                                     });
                                     studentTotalCount += studentsBySchool[school].Count;
                                 }
-
-                                prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                                
+                                stsStatusBar.BeginInvoke((MethodInvoker) delegate
                                 {
                                     prgProgressBar.Maximum = studentTotalCount;
                                     prgProgressBar.Value = 0;
@@ -303,7 +303,7 @@ namespace SKGovAtt
                                             dateTo);
                                         student.Schedule = new StudentSchedule(connection, student);
                                         studentCounter++;
-                                        prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                                        stsStatusBar.BeginInvoke((MethodInvoker)delegate
                                         {
                                             prgProgressBar.Value = studentCounter;
                                         });
@@ -313,7 +313,7 @@ namespace SKGovAtt
 
                             // Generate the report
                             UpdateStatusBar("Generating file...");
-                            prgProgressBar.BeginInvoke((MethodInvoker) delegate
+                            stsStatusBar.BeginInvoke((MethodInvoker)delegate
                             {
                                 prgProgressBar.Style = ProgressBarStyle.Marquee;
                                 prgProgressBar.Maximum = 2;
@@ -348,7 +348,7 @@ namespace SKGovAtt
 
                                     MessageBox.Show("File saved!", "File Saved", MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
-                                    prgProgressBar.BeginInvoke((MethodInvoker)delegate
+                                    stsStatusBar.BeginInvoke((MethodInvoker)delegate
                                     {
                                         prgProgressBar.Visible = false;
                                     });
@@ -449,13 +449,7 @@ namespace SKGovAtt
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btnConfigDatabase_Click(object sender, EventArgs e)
-        {
-            DisableControls();
-            ShowDatabaseConfigWindow();
-        }
-
+        
         private void btnRetryLoadDistricts_Click(object sender, EventArgs e)
         {
             MainWindow_Shown(sender, e);
@@ -469,6 +463,19 @@ namespace SKGovAtt
         private void txtDistrictDAN_TextChanged(object sender, EventArgs e)
         {
             AppConfiguration.SetDivisionDAN(txtDistrictDAN.Text);
+        }
+
+        private void mnuConfigureDatabase_Click(object sender, EventArgs e)
+        {
+            DisableControls();
+            ShowDatabaseConfigWindow();
+
+        }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            AboutBox1 aboutBox = new AboutBox1();
+            aboutBox.Show();
         }
         
     }

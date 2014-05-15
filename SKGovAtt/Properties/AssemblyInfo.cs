@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SKGovAtt")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Saskatchewan Government Attendance Generator for SchoolLogic")]
+[assembly: AssemblyDescription("Standalone utility to generate attendance reports from SchoolLogic.  Written by Mark Strendin (mark.strendin@lskysd.ca) for Living Sky School Division No. 202")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SKGovAtt")]
+[assembly: AssemblyCompany("Living Sky School Division No. 202")]
+[assembly: AssemblyProduct("Saskatchewan Government Attendance Generator for SchoolLogic")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

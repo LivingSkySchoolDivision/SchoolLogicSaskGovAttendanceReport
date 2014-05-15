@@ -52,11 +52,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnBuildConnStringTrusted = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtTrustedServerName = new System.Windows.Forms.TextBox();
             this.txtTrustedDatabaseName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtTrustedServerName = new System.Windows.Forms.TextBox();
+            this.btnBuildConnStringTrusted = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -71,14 +71,14 @@
             this.txtConnectionString.Name = "txtConnectionString";
             this.txtConnectionString.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtConnectionString.Size = new System.Drawing.Size(726, 50);
-            this.txtConnectionString.TabIndex = 0;
+            this.txtConnectionString.TabIndex = 6;
             // 
             // btnCreateConnectionString
             // 
             this.btnCreateConnectionString.Location = new System.Drawing.Point(251, 230);
             this.btnCreateConnectionString.Name = "btnCreateConnectionString";
             this.btnCreateConnectionString.Size = new System.Drawing.Size(167, 23);
-            this.btnCreateConnectionString.TabIndex = 10;
+            this.btnCreateConnectionString.TabIndex = 5;
             this.btnCreateConnectionString.Text = "Create connection string";
             this.btnCreateConnectionString.UseVisualStyleBackColor = true;
             this.btnCreateConnectionString.Click += new System.EventHandler(this.btnCreateConnectionString_Click);
@@ -88,7 +88,7 @@
             this.txtDatabaseName.Location = new System.Drawing.Point(134, 36);
             this.txtDatabaseName.Name = "txtDatabaseName";
             this.txtDatabaseName.Size = new System.Drawing.Size(271, 20);
-            this.txtDatabaseName.TabIndex = 9;
+            this.txtDatabaseName.TabIndex = 2;
             // 
             // label6
             // 
@@ -163,7 +163,7 @@
             this.btnSave.Location = new System.Drawing.Point(675, 481);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 3;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -173,7 +173,7 @@
             this.btnTest.Location = new System.Drawing.Point(6, 75);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 4;
+            this.btnTest.TabIndex = 7;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
@@ -252,7 +252,7 @@
             this.linkLabel1.MaximumSize = new System.Drawing.Size(300, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(300, 42);
-            this.linkLabel1.TabIndex = 12;
+            this.linkLabel1.TabIndex = 20;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "If you wish to create your own, or if you are having difficulty getting one to wo" +
     "rk, the following website may help: http://www.connectionstrings.com/sql-server/" +
@@ -305,15 +305,21 @@
             this.tabPage2.Text = "Trusted Connection";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btnBuildConnStringTrusted
+            // txtTrustedDatabaseName
             // 
-            this.btnBuildConnStringTrusted.Location = new System.Drawing.Point(251, 230);
-            this.btnBuildConnStringTrusted.Name = "btnBuildConnStringTrusted";
-            this.btnBuildConnStringTrusted.Size = new System.Drawing.Size(167, 23);
-            this.btnBuildConnStringTrusted.TabIndex = 11;
-            this.btnBuildConnStringTrusted.Text = "Create connection string";
-            this.btnBuildConnStringTrusted.UseVisualStyleBackColor = true;
-            this.btnBuildConnStringTrusted.Click += new System.EventHandler(this.btnBuildConnStringTrusted_Click);
+            this.txtTrustedDatabaseName.Location = new System.Drawing.Point(134, 36);
+            this.txtTrustedDatabaseName.Name = "txtTrustedDatabaseName";
+            this.txtTrustedDatabaseName.Size = new System.Drawing.Size(271, 20);
+            this.txtTrustedDatabaseName.TabIndex = 11;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 39);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(84, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Database Name";
             // 
             // label11
             // 
@@ -329,23 +335,17 @@
             this.txtTrustedServerName.Location = new System.Drawing.Point(134, 12);
             this.txtTrustedServerName.Name = "txtTrustedServerName";
             this.txtTrustedServerName.Size = new System.Drawing.Size(271, 20);
-            this.txtTrustedServerName.TabIndex = 13;
+            this.txtTrustedServerName.TabIndex = 10;
             // 
-            // txtTrustedDatabaseName
+            // btnBuildConnStringTrusted
             // 
-            this.txtTrustedDatabaseName.Location = new System.Drawing.Point(134, 36);
-            this.txtTrustedDatabaseName.Name = "txtTrustedDatabaseName";
-            this.txtTrustedDatabaseName.Size = new System.Drawing.Size(271, 20);
-            this.txtTrustedDatabaseName.TabIndex = 15;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 39);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Database Name";
+            this.btnBuildConnStringTrusted.Location = new System.Drawing.Point(251, 230);
+            this.btnBuildConnStringTrusted.Name = "btnBuildConnStringTrusted";
+            this.btnBuildConnStringTrusted.Size = new System.Drawing.Size(167, 23);
+            this.btnBuildConnStringTrusted.TabIndex = 12;
+            this.btnBuildConnStringTrusted.Text = "Create connection string";
+            this.btnBuildConnStringTrusted.UseVisualStyleBackColor = true;
+            this.btnBuildConnStringTrusted.Click += new System.EventHandler(this.btnBuildConnStringTrusted_Click);
             // 
             // DatabaseConnectionConfig
             // 
