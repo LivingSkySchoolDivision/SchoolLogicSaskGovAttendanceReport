@@ -24,6 +24,7 @@ namespace SKGovAtt
         private void MainWindow_Shown(object sender, EventArgs e)
         {
             btnRetryLoadDistricts.Enabled = false;
+            btnRetryLoadDistricts.Visible = false;
 
             // Populate the list of years and months
             drpYear.Items.Clear();

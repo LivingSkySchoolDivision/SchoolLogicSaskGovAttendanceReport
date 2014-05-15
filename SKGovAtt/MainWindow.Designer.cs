@@ -72,11 +72,12 @@
             // drpDistricts
             // 
             this.drpDistricts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.drpDistricts.Enabled = false;
             this.drpDistricts.FormattingEnabled = true;
             this.drpDistricts.Location = new System.Drawing.Point(5, 18);
             this.drpDistricts.Margin = new System.Windows.Forms.Padding(2);
             this.drpDistricts.Name = "drpDistricts";
-            this.drpDistricts.Size = new System.Drawing.Size(237, 21);
+            this.drpDistricts.Size = new System.Drawing.Size(270, 21);
             this.drpDistricts.TabIndex = 3;
             this.drpDistricts.SelectedValueChanged += new System.EventHandler(this.drpDistricts_SelectedValueChanged);
             // 
@@ -88,16 +89,16 @@
             this.lstSchools.Location = new System.Drawing.Point(5, 54);
             this.lstSchools.Margin = new System.Windows.Forms.Padding(2);
             this.lstSchools.Name = "lstSchools";
-            this.lstSchools.Size = new System.Drawing.Size(237, 319);
+            this.lstSchools.Size = new System.Drawing.Size(270, 154);
             this.lstSchools.TabIndex = 4;
             // 
             // btnGeneratePeriod
             // 
             this.btnGeneratePeriod.Enabled = false;
-            this.btnGeneratePeriod.Location = new System.Drawing.Point(642, 403);
+            this.btnGeneratePeriod.Location = new System.Drawing.Point(328, 468);
             this.btnGeneratePeriod.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneratePeriod.Name = "btnGeneratePeriod";
-            this.btnGeneratePeriod.Size = new System.Drawing.Size(246, 31);
+            this.btnGeneratePeriod.Size = new System.Drawing.Size(280, 31);
             this.btnGeneratePeriod.TabIndex = 8;
             this.btnGeneratePeriod.Text = "Generate for PERIOD attendance";
             this.btnGeneratePeriod.UseVisualStyleBackColor = true;
@@ -106,10 +107,10 @@
             // btnGenerateDaily
             // 
             this.btnGenerateDaily.Enabled = false;
-            this.btnGenerateDaily.Location = new System.Drawing.Point(642, 350);
+            this.btnGenerateDaily.Location = new System.Drawing.Point(328, 503);
             this.btnGenerateDaily.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerateDaily.Name = "btnGenerateDaily";
-            this.btnGenerateDaily.Size = new System.Drawing.Size(246, 31);
+            this.btnGenerateDaily.Size = new System.Drawing.Size(280, 31);
             this.btnGenerateDaily.TabIndex = 7;
             this.btnGenerateDaily.Text = "Generate for DAILY attendance";
             this.btnGenerateDaily.UseVisualStyleBackColor = true;
@@ -120,7 +121,7 @@
             this.drpMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpMonth.Enabled = false;
             this.drpMonth.FormattingEnabled = true;
-            this.drpMonth.Location = new System.Drawing.Point(85, 19);
+            this.drpMonth.Location = new System.Drawing.Point(119, 19);
             this.drpMonth.Name = "drpMonth";
             this.drpMonth.Size = new System.Drawing.Size(155, 21);
             this.drpMonth.TabIndex = 5;
@@ -130,7 +131,7 @@
             this.drpYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.drpYear.Enabled = false;
             this.drpYear.FormattingEnabled = true;
-            this.drpYear.Location = new System.Drawing.Point(85, 46);
+            this.drpYear.Location = new System.Drawing.Point(119, 46);
             this.drpYear.Name = "drpYear";
             this.drpYear.Size = new System.Drawing.Size(155, 21);
             this.drpYear.TabIndex = 6;
@@ -167,7 +168,7 @@
             this.txtDistrictDAN.Enabled = false;
             this.txtDistrictDAN.Location = new System.Drawing.Point(106, 13);
             this.txtDistrictDAN.Name = "txtDistrictDAN";
-            this.txtDistrictDAN.Size = new System.Drawing.Size(133, 20);
+            this.txtDistrictDAN.Size = new System.Drawing.Size(168, 20);
             this.txtDistrictDAN.TabIndex = 1;
             this.txtDistrictDAN.TextChanged += new System.EventHandler(this.txtDistrictDAN_TextChanged);
             // 
@@ -185,7 +186,7 @@
             this.txtDistrictPrefix.Enabled = false;
             this.txtDistrictPrefix.Location = new System.Drawing.Point(106, 54);
             this.txtDistrictPrefix.Name = "txtDistrictPrefix";
-            this.txtDistrictPrefix.Size = new System.Drawing.Size(133, 20);
+            this.txtDistrictPrefix.Size = new System.Drawing.Size(168, 20);
             this.txtDistrictPrefix.TabIndex = 2;
             this.txtDistrictPrefix.TextChanged += new System.EventHandler(this.txtDistrictPrefix_TextChanged);
             // 
@@ -200,12 +201,13 @@
             // 
             // btnRetryLoadDistricts
             // 
-            this.btnRetryLoadDistricts.Location = new System.Drawing.Point(5, 378);
+            this.btnRetryLoadDistricts.Location = new System.Drawing.Point(15, 246);
             this.btnRetryLoadDistricts.Name = "btnRetryLoadDistricts";
-            this.btnRetryLoadDistricts.Size = new System.Drawing.Size(237, 23);
+            this.btnRetryLoadDistricts.Size = new System.Drawing.Size(250, 53);
             this.btnRetryLoadDistricts.TabIndex = 10;
-            this.btnRetryLoadDistricts.Text = "Refresh";
+            this.btnRetryLoadDistricts.Text = "Retry database connection";
             this.btnRetryLoadDistricts.UseVisualStyleBackColor = true;
+            this.btnRetryLoadDistricts.Visible = false;
             this.btnRetryLoadDistricts.Click += new System.EventHandler(this.btnRetryLoadDistricts_Click);
             // 
             // label7
@@ -225,9 +227,9 @@
             this.groupBox1.Controls.Add(this.drpYear);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(642, 148);
+            this.groupBox1.Location = new System.Drawing.Point(328, 382);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 81);
+            this.groupBox1.Size = new System.Drawing.Size(280, 81);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report date";
@@ -238,9 +240,9 @@
             this.groupBox2.Controls.Add(this.txtDistrictDAN);
             this.groupBox2.Controls.Add(this.txtDistrictPrefix);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(15, 148);
+            this.groupBox2.Location = new System.Drawing.Point(328, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(249, 90);
+            this.groupBox2.Size = new System.Drawing.Size(280, 90);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "District numbers";
@@ -259,7 +261,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(318, 9);
+            this.label9.Location = new System.Drawing.Point(12, 134);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 23;
@@ -273,13 +275,13 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(249, 26);
             this.label10.TabIndex = 24;
-            this.label10.Text = "Fill in the DAN and file prefix for your school division below.";
+            this.label10.Text = "Fill in the DAN and file prefix for your school division below. ";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(637, 9);
+            this.label11.Location = new System.Drawing.Point(12, 382);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 13);
             this.label11.TabIndex = 25;
@@ -288,7 +290,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(320, 25);
+            this.label12.Location = new System.Drawing.Point(14, 150);
             this.label12.MaximumSize = new System.Drawing.Size(250, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(250, 39);
@@ -300,10 +302,9 @@
             // 
             this.groupBox3.Controls.Add(this.drpDistricts);
             this.groupBox3.Controls.Add(this.lstSchools);
-            this.groupBox3.Controls.Add(this.btnRetryLoadDistricts);
-            this.groupBox3.Location = new System.Drawing.Point(323, 148);
+            this.groupBox3.Location = new System.Drawing.Point(328, 134);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(247, 408);
+            this.groupBox3.Size = new System.Drawing.Size(280, 216);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "School selection";
@@ -311,7 +312,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(323, 74);
+            this.label3.Location = new System.Drawing.Point(17, 199);
             this.label3.MaximumSize = new System.Drawing.Size(250, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(248, 26);
@@ -322,7 +323,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(639, 25);
+            this.label13.Location = new System.Drawing.Point(14, 398);
             this.label13.MaximumSize = new System.Drawing.Size(250, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(249, 26);
@@ -335,9 +336,9 @@
             this.stsStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.prgProgressBar,
             this.lblStatus});
-            this.stsStatusBar.Location = new System.Drawing.Point(0, 617);
+            this.stsStatusBar.Location = new System.Drawing.Point(0, 541);
             this.stsStatusBar.Name = "stsStatusBar";
-            this.stsStatusBar.Size = new System.Drawing.Size(920, 22);
+            this.stsStatusBar.Size = new System.Drawing.Size(620, 22);
             this.stsStatusBar.SizingGrip = false;
             this.stsStatusBar.TabIndex = 30;
             this.stsStatusBar.Text = "statusStrip1";
@@ -388,9 +389,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 639);
+            this.ClientSize = new System.Drawing.Size(620, 563);
             this.Controls.Add(this.stsStatusBar);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.btnRetryLoadDistricts);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label12);
