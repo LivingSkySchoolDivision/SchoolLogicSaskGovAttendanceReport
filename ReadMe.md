@@ -1,4 +1,8 @@
-﻿How to install
+﻿Download link (BitBucket)
+=========================
+Download a compiled ready-to-go version here: https://bitbucket.org/livingskyschooldivision/sask-government-attendance-report-generator-for-schoollogic/downloads/SKGovAtt_Compiled.zip
+
+How to install
 ==============
 * Ensure Microsoft .Net framework 4 or 4.5 is installed on the client machine.
     * If your runtime environment has "client profile" in the name (in the Add/Remove programs list), this utility will not work. 
