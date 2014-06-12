@@ -56,13 +56,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.stsStatusBar = new System.Windows.Forms.StatusStrip();
-            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
-            this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.mnuAbout = new System.Windows.Forms.MenuItem();
-            this.mnuConfigureDatabase = new System.Windows.Forms.MenuItem();
             this.prgProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.mnuConfigureDatabase = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.mnuAbout = new System.Windows.Forms.MenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -343,6 +343,16 @@
             this.stsStatusBar.TabIndex = 30;
             this.stsStatusBar.Text = "statusStrip1";
             // 
+            // prgProgressBar
+            // 
+            this.prgProgressBar.Name = "prgProgressBar";
+            this.prgProgressBar.Size = new System.Drawing.Size(100, 16);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 17);
+            // 
             // mainMenu1
             // 
             this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
@@ -356,6 +366,12 @@
             this.mnuConfigureDatabase});
             this.menuItem1.Text = "Configure";
             // 
+            // mnuConfigureDatabase
+            // 
+            this.mnuConfigureDatabase.Index = 0;
+            this.mnuConfigureDatabase.Text = "Database Configuration";
+            this.mnuConfigureDatabase.Click += new System.EventHandler(this.mnuConfigureDatabase_Click);
+            // 
             // menuItem2
             // 
             this.menuItem2.Index = 1;
@@ -368,22 +384,6 @@
             this.mnuAbout.Index = 0;
             this.mnuAbout.Text = "About this utility";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
-            // 
-            // mnuConfigureDatabase
-            // 
-            this.mnuConfigureDatabase.Index = 0;
-            this.mnuConfigureDatabase.Text = "Database Configuration";
-            this.mnuConfigureDatabase.Click += new System.EventHandler(this.mnuConfigureDatabase_Click);
-            // 
-            // prgProgressBar
-            // 
-            this.prgProgressBar.Name = "prgProgressBar";
-            this.prgProgressBar.Size = new System.Drawing.Size(100, 16);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // MainWindow
             // 
@@ -414,8 +414,7 @@
             this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "SaskLearning Attendance Report Generator for SchoolLogic, created by Mark Strendi" +
-    "n (mark.strendin@lskysd.ca)";
+            this.Text = "SaskLearning Attendance Report Generator for SchoolLogic";
             this.Shown += new System.EventHandler(this.MainWindow_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
