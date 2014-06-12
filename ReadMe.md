@@ -23,7 +23,15 @@ This utility requires access to the SchoolLogic database. Depending on how your 
 
 Regardless of how you access the database, your database administrator should give you *read only* access only. This utility does not need to write to the database.
 
-If you are having difficulty getting a connection string working, you may find some help at http://www.connectionstrings.com/sql-server/. 
+If you are having difficulty getting a connection string working, you may find some help at http://www.connectionstrings.com/sql-server/.
+
+Potential security issues
+=========================
+This utility stores the database connection string in plain text in it's config file (the file has extension ".config"). If your connection string includes a username and password, anyone with access to the config file will be able to see it.
+
+I recommend creating a new SQL user with read-only access and a complex password, and only using this user account with this utility. You should also protect the ".config" file from being accessed by users who don't need to use this utility - especially if you intend to run this utility from a Windows share.
+
+This utility will not attempt to write to the SQL database, but if someone malicious obtains the username and password from your connection string, they can do serious damage to the database if the SQL user has anything other than read only access.
 
 Microsoft .Net Framework issues
 ===============================
