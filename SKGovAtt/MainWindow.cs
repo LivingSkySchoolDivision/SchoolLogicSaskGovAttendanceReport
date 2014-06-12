@@ -23,8 +23,6 @@ namespace SKGovAtt
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
-            MessageBox.Show(Environment.Version.Major + "." + Environment.Version.Minor + "", "");
-
             btnRetryLoadDistricts.Enabled = false;
             btnRetryLoadDistricts.Visible = false;
 
