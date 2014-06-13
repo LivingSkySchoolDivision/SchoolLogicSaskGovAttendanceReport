@@ -65,6 +65,7 @@
     <Compile Include="Track.cs" />
     <Compile Include="TrackCalendar.cs" />
     <Compile Include="TrackCalendarDay.cs" />
+    <Compile Include="TrackCalendarOverride.cs" />
     <Compile Include="XLSXGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

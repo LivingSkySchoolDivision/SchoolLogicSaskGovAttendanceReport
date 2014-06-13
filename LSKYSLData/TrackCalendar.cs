@@ -10,6 +10,7 @@ namespace LSKYSLData
     public class TrackCalendar
     {
         private List<TrackCalendarDay> Days { get; set; }
+        public List<TrackCalendarOverride> Overrides { get; set; }
         public List<TrackCalendarDay> InstructionalDays
         {
             get
@@ -64,11 +65,13 @@ namespace LSKYSLData
         public TrackCalendar(SqlConnection connection, Track track)
         {
             this.Days = TrackCalendarDay.LoadCalendarDaysForTrack(connection, track);
+            this.Overrides = TrackCalendarOverride.Load(connection, track);
         }
 
-        public TrackCalendar(List<TrackCalendarDay> days)
+        public TrackCalendar(List<TrackCalendarDay> days, List<TrackCalendarOverride> overrides)
         {
             this.Days = days;
+            this.Overrides = overrides;
         }
 
         public bool IsInstructional(DateTime thisDay)
@@ -133,7 +136,7 @@ namespace LSKYSLData
 
         public TrackCalendar Between(DateTime startDate, DateTime endDate)
         {
-            return new TrackCalendar(this.Days.Where(c => c.Date >= startDate && c.Date <= endDate).ToList<TrackCalendarDay>());
+            return new TrackCalendar(this.Days.Where(c => c.Date >= startDate && c.Date <= endDate).ToList(), this.Overrides.Where(c => c.Date >= startDate && c.Date <= endDate).ToList());
         }
 
         public TrackCalendarDay GetSchoolCalendarDay(DateTime thisDay)
@@ -159,5 +162,27 @@ namespace LSKYSLData
             }
             return null;
         }
+
+        public List<TrackCalendarOverride> GetOverridesOn(DateTime thisDay)
+        {
+            return GetOverridesOn(thisDay.Year, thisDay.Month, thisDay.Day);
+        }
+
+        public List<TrackCalendarOverride> GetOverridesOn(int year, int month, int day)
+        {
+            List<TrackCalendarOverride> returnMe = new List<TrackCalendarOverride>();
+            foreach (TrackCalendarOverride scoverride in this.Overrides)
+            {
+                if (
+                    (scoverride.Date.Year == year) &&
+                    (scoverride.Date.Month == month) &&
+                    (scoverride.Date.Day == day)
+                    )
+                {
+                    returnMe.Add(scoverride);
+                }
+            }
+            return returnMe;
+        } 
     }
 }

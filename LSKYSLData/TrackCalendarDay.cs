@@ -66,7 +66,7 @@ namespace LSKYSLData
         {
             get
             {
-                if ((this.SchoolDayNumberString.ToLower() == "n") || (string.IsNullOrEmpty(this.SchoolDayNumberString)))
+                if ((this.SchoolDayNumberString.ToLower() == "n") || (string.IsNullOrEmpty(this.SchoolDayNumberString.Trim())))
                 {
                     return false;
                 }

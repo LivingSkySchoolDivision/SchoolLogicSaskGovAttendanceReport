@@ -54,6 +54,10 @@ namespace LSKYSLData
                             // The student does not have an outdate
                             expectedBlocks += this.Track.DailyBlocksPerDay;
                         }
+
+                        // Check for any calendar overrides
+                        expectedBlocks -= this.Track.Calendar.GetOverridesOn(thisDay).Count;
+
                     }
                 }
 
