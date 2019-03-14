@@ -37,20 +37,6 @@ Microsoft .Net Framework issues
 ===============================
 This utility requires Microsoft .Net version 4 or 4.5, but it cannot be a "client profile" version of the runtime environment. This is because the third party library that the utility uses to create Excel documents (EPPlus) requires access to the System.Web libraries, which are not available in "client profile" versions. Microsoft has moved away from "client profile" versions since 4.5, so the easiest way to prevent problems is simply installing the newest version of the .Net runtime environment.
 
-Using the source code
-=====================
-You can clone this repository to your computer if you have Mercurial installed, by typing the following:
-    
-    hg clone https://bitbucket.org/livingskyschooldivision/sask-government-attendance-report-generator-for-schoollogic
-
- You can also download the source code from this repository from the "Downloads" link (likely on the left side of this page if you are reading this on bitbucket).
-
- You should only need Visual Studio to compile - I used Visual Studio 2012, but any recent version should also work.
-
-Credits
-=======
-This utility was created by Mark Strendin (mark.strendin@lskysd.ca) of Living Sky School Division No. 202, in North Battleford Saskatchewan. If you have issues or feedback, feel free to contact me, though I can't guarantee that I'll answer.
-
 License
 =======
 You are free to use, redistribute and/or modify this utility as you see fit.
