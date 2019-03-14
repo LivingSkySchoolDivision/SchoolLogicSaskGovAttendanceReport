@@ -1,6 +1,7 @@
-﻿Download link (BitBucket)
+Download link (GitHub)
 =========================
-Download a compiled ready-to-go version here: https://bitbucket.org/livingskyschooldivision/sask-government-attendance-report-generator-for-schoollogic/downloads/SKGovAtt_Compiled.zip
+See [releases](https://github.com/LivingSkySchoolDivision/SchoolLogicSaskGovAttendanceReport/releases/latest) for ready to use copies of this program.
+
 
 How to install
 ==============
@@ -11,8 +12,6 @@ How to install
 * The utility does not require an "installation" program to be run, it will work out of the box as long as all the included files are in the same folder.
 * Copy the contents of the zip file to a folder on the C: drive (or optionally, on a network share). I recommend creating a new folder on your C: drive called "SKGovAtt", and expanding the zip file into that.
 * To run the utility, launch "SKGovAtt.exe". The first time it is run it will prompt for a database connection string.
-
-You do not need to install this on a server - it is designed to be run from a workstation. You may experience slowness if your connection to the database server is less than 10mbps.
 
 The utility is designed to be used by non-sysadmins once it has been configured. As long as the database connection string works, any user who can push a button should be able to generate the file.
 
@@ -25,6 +24,7 @@ Regardless of how you access the database, your database administrator should gi
 
 If you are having difficulty getting a connection string working, you may find some help at http://www.connectionstrings.com/sql-server/.
 
+
 Potential security issues
 =========================
 This utility stores the database connection string in plain text in it's config file (the file has extension ".config"). If your connection string includes a username and password, anyone with access to the config file will be able to see it.
@@ -33,9 +33,6 @@ I recommend creating a new SQL user with read-only access and a complex password
 
 This utility will not attempt to write to the SQL database, but if someone malicious obtains the username and password from your connection string, they can do serious damage to the database if the SQL user has anything other than read only access.
 
-Microsoft .Net Framework issues
-===============================
-This utility requires Microsoft .Net version 4 or 4.5, but it cannot be a "client profile" version of the runtime environment. This is because the third party library that the utility uses to create Excel documents (EPPlus) requires access to the System.Web libraries, which are not available in "client profile" versions. Microsoft has moved away from "client profile" versions since 4.5, so the easiest way to prevent problems is simply installing the newest version of the .Net runtime environment.
 
 License
 =======
